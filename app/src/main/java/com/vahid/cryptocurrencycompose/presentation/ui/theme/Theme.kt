@@ -1,4 +1,4 @@
-package com.vahid.cryptocurrencycompose.ui.theme
+package com.vahid.cryptocurrencycompose.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
