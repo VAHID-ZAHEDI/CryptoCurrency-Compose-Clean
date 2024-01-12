@@ -1,6 +1,8 @@
 package com.vahid.cryptocurrencycompose.presentation
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,6 +25,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,13 +33,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -61,6 +69,8 @@ fun CryptoListScreen() {
         shape = RoundedCornerShape(8)
 
     ) {
+
+
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -77,12 +87,22 @@ fun CryptoListScreen() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
+                val screenWidth = Offset.Unspecified.x
+
+                Box(
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .size((screenWidth / 2).dp)
+                        .background(Color.White)
+                        .alpha(0.1f)
+                )
+
                 AsyncImage(
                     model = "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
                     contentDescription = "icon",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(0.dp)
+                        .size(40.dp)
                         .clip(CircleShape)
                         .alpha(0.5f)
 
@@ -90,7 +110,7 @@ fun CryptoListScreen() {
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "BTC",
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onPrimary,
                     fontFamily = FontFamily(Font(R.font.monaco))
                 )
                 Spacer(modifier = Modifier.width(8.dp))
@@ -110,22 +130,24 @@ fun CryptoListScreen() {
 
             }
             Spacer(modifier = Modifier.width(300.dp))
-            Box(
-                modifier = Modifier
-                    .alpha(0.05f)
-                    .clip(CircleShape)
-                    .background(Color.White)
-                    .requiredSize(160.dp)
-                    .offset(500.dp)
-            )
-            Box(
-                modifier = Modifier
-                    .alpha(0.05f)
-                    .clip(CircleShape)
-                    .background(Color.Red)
-                    .requiredSize(100.dp)
-                    .offset(10.dp)
-            )
+//            Box(
+//                modifier = Modifier
+//                    .alpha(0.05f)
+//                    .clip(CircleShape)
+//                    .background(Color.White)
+//                    .requiredSize(160.dp)
+//                    .offset(500.dp)
+//            )
+//            Box(
+//                modifier = Modifier
+//                    .alpha(0.05f)
+//                    .clip(CircleShape)
+//                    .background(Color.Red)
+//                    .requiredSize(100.dp)
+//                    .offset(10.dp)
+//            )
+
+
         }
 
 
@@ -134,10 +156,14 @@ fun CryptoListScreen() {
 
 }
 
-@PreviewProvider
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun ItemPreview() {
-    Row {
+    Row(
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.background)
+            .fillMaxSize()
+    ) {
         Column(modifier = Modifier.padding(4.dp)) {
             CryptoListScreen()
 
