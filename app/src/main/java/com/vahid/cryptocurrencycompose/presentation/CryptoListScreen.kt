@@ -87,15 +87,15 @@ fun CryptoListScreen() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
-                val screenWidth = Offset.Unspecified.x
-
-                Box(
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .size((screenWidth / 2).dp)
-                        .background(Color.White)
-                        .alpha(0.1f)
-                )
+//                val screenWidth = Offset.Unspecified.x
+//
+//                Box(
+//                    modifier = Modifier
+//                        .clip(CircleShape)
+//                        .size((screenWidth / 2).dp)
+//                        .background(Color.White)
+//                        .alpha(0.1f)
+//                )
 
                 AsyncImage(
                     model = "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",

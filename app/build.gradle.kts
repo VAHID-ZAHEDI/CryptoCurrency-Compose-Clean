@@ -33,6 +33,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        debug {
+            isDebuggable =false
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -83,5 +87,7 @@ dependencies {
         implementation(logging.interceptor)
         //lottie animation
         implementation(compose.lottie.animation)
+        implementation(libs.coil.compose)
+
     }
 }
