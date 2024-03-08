@@ -25,6 +25,8 @@ coil = "2.6.0"
 navigationCompose = "2.7.5"
 retrofit = "2.9.0"
 loggingInterceptor = "4.11.0"
+chucker="3.5.1"
+chucker_interceptor_release="3.5.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -51,8 +53,8 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 compose-lottie-animation = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottieAnimation" }
 #coil-image-loader = { group = "io.coil-kt:coil", name = "compose", version.ref = "coil" }
 coil_compose = { group = "io.coil-kt", name = "coil-compose", version = "2.6.0" }
-
-
+chucker_interceptor = { group = "com.github.chuckerteam", name = "chucker:library", version = "3.5.1" }
+chucker_interceptor_release = { group = "com.github.chuckerteam", name = "chucker:library-no-op", version = "3.5.1" }
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

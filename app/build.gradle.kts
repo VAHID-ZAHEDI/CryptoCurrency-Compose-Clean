@@ -35,7 +35,7 @@ android {
         }
 
         debug {
-            isDebuggable =false
+            isDebuggable = false
         }
     }
     compileOptions {
@@ -88,6 +88,13 @@ dependencies {
         //lottie animation
         implementation(compose.lottie.animation)
         implementation(libs.coil.compose)
+//        debugImplementation(libs.chucker.interceptor)
+//        releaseImplementation (libs.chucker.interceptor.release)
+
+        debugImplementation ("com.github.chuckerteam.chucker:library:3.5.2")
+        releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:3.5.1")
+
+
 
     }
 }
