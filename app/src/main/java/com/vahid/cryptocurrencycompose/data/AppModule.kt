@@ -22,14 +22,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePaprikaApi(@ApplicationContext app:Context): ApiService {
-        val client = OkHttpClient.Builder()
-            .addInterceptor(ChuckerInterceptor.Builder(app).build())
-            .build()
+    fun providePaprikaApi(): ApiService {
+//        val client = OkHttpClient.Builder()
+//            .addInterceptor(ChuckerInterceptor.Builder(app).build())
+//            .build()
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
+//            .client(client)
             .build()
             .create(ApiService::class.java)
     }

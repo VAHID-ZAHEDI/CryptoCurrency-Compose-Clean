@@ -29,9 +29,16 @@ data class CurrencyPricesDTO(
     @SerializedName("id")
     val id: Int = 0
 )
-fun CurrencyPricesDTO.toCurrencyPrices()=CurrencyPrices(
-        name=name,
-        nameFa = nameFa,
-        priceInUsdt = priceInUsdt,
-        symbol = "https://cdn.tabdeal.org/coin-icons/webp/$symbol-icon-128.webp"
-    )
+
+fun CurrencyPricesDTO.toCurrencyPrices() = CurrencyPrices(
+
+    name = name,
+
+    nameFa = nameFa,
+
+    priceInUsdt = "$priceInUsdt $",
+
+    imageUrl = "https://cdn.tabdeal.org/coin-icons/webp/$symbol-icon-128.webp",
+
+    symbol = symbol
+)

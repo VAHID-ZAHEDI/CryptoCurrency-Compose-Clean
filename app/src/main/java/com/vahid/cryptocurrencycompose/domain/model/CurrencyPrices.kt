@@ -15,5 +15,7 @@ data class CurrencyPrices(
 
     val name: String = "",
 
+    val imageUrl:String,
+
     val id: Int = 0
 )

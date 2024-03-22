@@ -16,53 +16,76 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.UiMode
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.vahid.cryptocurrencycompose.R
 import com.vahid.cryptocurrencycompose.domain.model.CurrencyPrices
+import com.vahid.cryptocurrencycompose.presentation.CryptoListScreen
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.MyApplicationTheme
 import com.vahid.cryptocurrencycompose.presentation.ui.theme.Pink_start
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.gradient_end_2
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.gradient_end_3
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.gradient_end_4
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.gradient_start_2
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.gradient_start_3
+import com.vahid.cryptocurrencycompose.presentation.ui.theme.gradient_start_4
 import com.vahid.cryptocurrencycompose.presentation.ui.theme.orange_end
+import com.vahid.cryptocurrencycompose.util.PreviewProvider
 
 @Composable
 fun CryptoCurrencyItem(
+    position: Int,
     currencyPrices: CurrencyPrices
 ) {
-    Spacer(modifier = Modifier.padding(8.dp))
+    val colors = listOf(
+        Pair(Pink_start, orange_end),
+        Pair(gradient_start_2, gradient_end_2),
+        Pair(gradient_start_3, gradient_end_3),
+        Pair(gradient_start_4, gradient_end_4),
+    )
+    Spacer(modifier = Modifier.padding(16.dp))
     Card(
 
         modifier = Modifier
-            .height(70.dp)
+            .height(90.dp)
             .fillMaxWidth(),
         shape = RoundedCornerShape(8)
 
     ) {
-
-
+        var index = randomColor(colors)
+        val color = colors[position]
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .background(
                     brush = Brush.horizontalGradient(
-                        colors = listOf(Pink_start, orange_end)
+                        colors = listOf(color.first, color.second)
                     )
                 )
         ) {
+
+
             Row(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Spacer(modifier = Modifier.padding(8.dp))
 
 //                val screenWidth = Offset.Unspecified.x
 //
@@ -75,7 +98,7 @@ fun CryptoCurrencyItem(
 //                )
 
                 AsyncImage(
-                    model = currencyPrices.symbol,
+                    model = currencyPrices.imageUrl,
                     contentDescription = "icon",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -85,22 +108,24 @@ fun CryptoCurrencyItem(
 
                 )
                 Spacer(modifier = Modifier.width(8.dp))
+
                 Text(
-                    text = "BTC",
+                    text = currencyPrices.symbol,
                     color = MaterialTheme.colorScheme.onPrimary,
                     fontFamily = FontFamily(Font(R.font.monaco))
                 )
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Text(
-                    text = "Bitcoin",
+                    text = currencyPrices.name,
                     color = Color.White,
                     modifier = Modifier.alpha(0.5f),
                     fontSize = 12.sp
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "2000$",
+                    modifier = Modifier.shadow(4.dp),
+                    text = currencyPrices.priceInUsdt,
                     color = Color.White,
                     fontSize = 12.sp
                 )
@@ -129,5 +154,25 @@ fun CryptoCurrencyItem(
 
 
     }
-
 }
+
+@Composable
+private fun randomColor(colors: List<Pair<Color, Color>>) =
+    (0..colors.lastIndex).shuffled()
+
+@Composable
+@Preview
+fun GreetingPreview() {
+    MyApplicationTheme {
+        Row {
+
+            CryptoCurrencyItem(
+                0,
+                currencyPrices = CurrencyPrices(
+                    "BTC", "بیت کوین", "", "", "", ""
+                )
+            )
+        }
+    }
+}
+
