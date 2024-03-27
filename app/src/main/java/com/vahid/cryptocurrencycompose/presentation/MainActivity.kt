@@ -31,11 +31,10 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .background(Brush.linearGradient(background)),
+                        .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Row {
+                    Row(Modifier.background(Brush.linearGradient(background))) {
                         CryptoListScreen()
                     }
                 }

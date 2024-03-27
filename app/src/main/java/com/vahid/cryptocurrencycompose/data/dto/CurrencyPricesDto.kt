@@ -36,9 +36,10 @@ fun CurrencyPricesDTO.toCurrencyPrices() = CurrencyPrices(
 
     nameFa = nameFa,
 
-    priceInUsdt = "$priceInUsdt $",
+    priceInUsdt = "${priceInUsdt.toFloat()} $",
 
     imageUrl = "https://cdn.tabdeal.org/coin-icons/webp/$symbol-icon-128.webp",
 
-    symbol = symbol
+    symbol = symbol,
+    id = id
 )

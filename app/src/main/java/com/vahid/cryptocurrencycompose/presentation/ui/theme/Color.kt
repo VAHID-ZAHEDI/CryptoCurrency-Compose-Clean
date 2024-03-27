@@ -15,8 +15,8 @@ val gradient_end_2= Color(0xFF5496FF)
 val gradient_start_3= Color(0xFFE56336)
 val gradient_end_3= Color(0xFFFFDF40)
 
-val gradient_start_4= Color(0xFFA5E94A)
-val gradient_end_4= Color(0xFF429321)
+val gradient_start_4= Color(0xFF429321)
+val gradient_end_4= Color(0xFFA5E94A)
 
 
 
