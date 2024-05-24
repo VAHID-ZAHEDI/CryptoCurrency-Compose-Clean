@@ -5,6 +5,7 @@ plugins {
         alias(kotlinAndroid)
         alias(ksp)
         alias(hilt.android)
+        alias(kotlin.serialize)
     }
 }
 
@@ -50,7 +51,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     packaging {
         resources {
@@ -92,9 +93,17 @@ dependencies {
 //        debugImplementation(libs.chucker.interceptor)
 //        releaseImplementation (libs.chucker.interceptor.release)
 
-        debugImplementation ("com.github.chuckerteam.chucker:library:3.5.2")
-        releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:3.5.1")
+        debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
+        releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.1")
 
+        implementation(libs.ktor.client.core)
+        implementation(libs.ktor.client.android)
+        implementation(ktor.client.serialization)
+        implementation(ktor.client.logging)
+        implementation("ch.qos.logback:logback-classic:1.2.3")
+        implementation(libs.ktor.serialization.android)
+        implementation(libs.ktor.gson)
+//        implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
 
 
     }

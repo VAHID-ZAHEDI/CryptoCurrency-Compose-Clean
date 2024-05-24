@@ -1,12 +1,12 @@
 package com.vahid.cryptocurrencycompose.data.dto
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
-data class FirstCurrency(@SerializedName("symbol")
-                         val symbol: String = "",
-                         @SerializedName("name")
-                         val name: String = "",
-                         @SerializedName("id")
-                         val id: Int = 0,
-                         @SerializedName("name_fa")
-                         val nameFa: String = "")
+@Serializable
+data class FirstCurrency(
+    val symbol: String? = "",
+    val name: String? = "",
+    val id: Int? = 0,
+    val nameFa: String? = ""
+)

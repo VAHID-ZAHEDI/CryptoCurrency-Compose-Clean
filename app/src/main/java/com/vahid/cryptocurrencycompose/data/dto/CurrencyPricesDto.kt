@@ -2,31 +2,23 @@ package com.vahid.cryptocurrencycompose.data.dto
 
 import com.google.gson.annotations.SerializedName
 import com.vahid.cryptocurrencycompose.domain.model.CurrencyPrices
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CurrencyPricesDTO(
-    @SerializedName("dexable")
     val dexable: Boolean = false,
-    @SerializedName("symbol")
     val symbol: String = "",
-    @SerializedName("created")
     val created: String = "",
-    @SerializedName("usdt_volume")
     val usdtVolume: String = "",
-    @SerializedName("name_fa")
     val nameFa: String = "",
-    @SerializedName("change_percent")
     val changePercent: String = "",
-    @SerializedName("volume")
     val volume: String = "",
-    @SerializedName("markets")
-    val markets: List<MarketsItem>?,
-    @SerializedName("is_swappable")
+    val markets: List<MarketsItem>?= emptyList(),
     val isSwappable: Boolean = false,
-    @SerializedName("price_in_usdt")
+    @SerialName("price_in_usdt")
     val priceInUsdt: String = "",
-    @SerializedName("name")
     val name: String = "",
-    @SerializedName("id")
     val id: Int = 0
 )
 
@@ -36,7 +28,7 @@ fun CurrencyPricesDTO.toCurrencyPrices() = CurrencyPrices(
 
     nameFa = nameFa,
 
-    priceInUsdt = "${priceInUsdt.toFloat()} $",
+    priceInUsdt = "${priceInUsdt.toFloatOrNull()} $",
 
     imageUrl = "https://cdn.tabdeal.org/coin-icons/webp/$symbol-icon-128.webp",
 

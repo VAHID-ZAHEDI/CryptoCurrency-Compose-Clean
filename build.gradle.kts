@@ -6,6 +6,7 @@ plugins {
         alias(kotlinAndroid) apply false
         alias(hilt.android) apply false
         alias(ksp) apply false
+        alias(kotlin.serialize) apply false
     }
 }
 true // Needed to make the Suppress annotation work for the plugins block

@@ -1,5 +1,6 @@
 package com.vahid.cryptocurrencycompose.domain.usecases
 
+import android.util.Log
 import com.vahid.cryptocurrencycompose.data.dto.toCurrencyPrices
 import com.vahid.cryptocurrencycompose.domain.MainRepository
 import com.vahid.cryptocurrencycompose.util.DataState
@@ -15,7 +16,8 @@ class GetCurrencyPricesUseCase @Inject constructor(private val mainRepository: M
             }))
 
         } catch (e: Exception) {
-            emit(DataState.Error("ERROR"))
+            e.printStackTrace()
+            emit(DataState.Error(e.message.toString()))
 
         }
     }

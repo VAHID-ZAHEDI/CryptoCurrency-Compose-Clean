@@ -45,7 +45,7 @@ fun CryptoListScreen(
             val cardListState = remember { CardListState(state.cryptoCurrencies.toMutableStateList()) }
             val state2 = rememberLazyListState()
             val randomNumbers = (0..3).shuffled()
-
+            Log.d("jjj", "CryptoListScreen: ${cardListState.list.toList()}")
             LazyColumn(
                 state = state2,
                 modifier = Modifier

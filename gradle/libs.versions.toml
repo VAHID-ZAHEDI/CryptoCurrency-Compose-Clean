@@ -7,16 +7,19 @@ projectCompileSdkVersion = "34"
 projectVersionCode = "1"
 
 
+
 agp = "8.2.2"
-kotlin = "1.9.0"
-core-ktx = "1.12.0"
+kotlin = "1.9.23"
+core-ktx = "1.13.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.7.0"
 activity-compose = "1.8.2"
-compose-bom = "2024.03.00"
-ksp = "1.9.10-1.0.13"
+compose-bom = "2024.04.00"
+ksp = "1.9.23-1.0.20"
+ktorVersion="1.6.3"
+
 
 hilt = "2.49"
 hiltNavigationCompose = "1.2.0"
@@ -55,9 +58,21 @@ compose-lottie-animation = { group = "com.airbnb.android", name = "lottie-compos
 coil_compose = { group = "io.coil-kt", name = "coil-compose", version = "2.6.0" }
 chucker_interceptor = { group = "com.github.chuckerteam", name = "chucker:library", version = "3.5.1" }
 chucker_interceptor_release = { group = "com.github.chuckerteam", name = "chucker:library-no-op", version = "3.5.1" }
+
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktorVersion" }
+ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktorVersion" }
+ktor-serialization-android = { group = "io.ktor", name = "ktor-serialization", version.ref = "ktorVersion" }
+ktor-gson = { group = "io.ktor", name = "ktor-gson", version.ref = "ktorVersion" }
+ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktorVersion" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktorVersion" }
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-serialize = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+
